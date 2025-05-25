@@ -7,9 +7,7 @@ A modern React + TypeScript project using Vite, Jest for testing, ESLint + Prett
 ## 🚀 Getting Started
 
 ### 1. Clone the repository
-```bash
-
-`git clone https://github.com/your-username/vendon-task.git`
+`git clone https://github.com/maris-kastenass/vendon-task.git`
 `cd vendon-task`
 
 2. Install dependencies
