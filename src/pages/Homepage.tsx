@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Form, InputGroup, Button, Dropdown, DropdownButton } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import './Homepage.css';
@@ -14,17 +14,34 @@ interface HomepageProps {
 }
 
 const Homepage: React.FC<HomepageProps> = ({ name, onNameChange, selectedTestKey, setSelectedTestKey, allTests }) => {
+  const [errorText, setErrorText] = useState<string>('');
+
   const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setErrorText('');
     onNameChange(e.target.value);
   };
 
   const handleClick = () => {
+    if (!name && !selectedTestKey) {
+      setErrorText('Please input Name and select Test');
+      return;
+    }
+    if (!name) {
+      setErrorText('Please input Name');
+      return;
+    }
+    if (!selectedTestKey) {
+      setErrorText('Please select Test');
+      return;
+    }
+
     navigate('/questions')
   };
 
   const handleSelect = (eventKey: string | null) => {
+    setErrorText('');
     setSelectedTestKey(eventKey);
   };
 
@@ -61,13 +78,12 @@ const Homepage: React.FC<HomepageProps> = ({ name, onNameChange, selectedTestKey
             <Button 
               variant="success" 
               className="w-100" 
-              // can't start while not input name and choise one from tests
-              disabled={!name || !selectedTestKey} 
               onClick={handleClick}
             >
               Start
             </Button>
           </div>
+          {errorText ? <p className='text-danger mt-3'>{errorText}</p> : null}
         </div>
       </div>
     </div>

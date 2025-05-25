@@ -45,24 +45,26 @@ describe('Homepage Component', () => {
     expect(screen.getByRole('button', { name: 'Start' })).toBeInTheDocument();
   });
 
-  it('disables start button when name and test is not selected', () => {
-    setup('', null);
-    expect(screen.getByRole('button', { name: 'Start' })).toBeDisabled();
+  it('shows error when name and test is not selected', () => {
+    setup();
+    fireEvent.click(screen.getByRole('button', { name: 'Start' }));
+    expect(screen.getByText('Please input Name and select Test')).toBeInTheDocument();
   });
 
-  it('disables start button when test is not selected', () => {
-    setup('Maris', null);
-    expect(screen.getByRole('button', { name: 'Start' })).toBeDisabled();
+  it('shows error when name is missing', () => {
+    setup('', '1' );
+
+    fireEvent.click(screen.getByRole('button', { name: 'Start' }));
+
+    expect(screen.getByText('Please input Name')).toBeInTheDocument();
   });
 
-  it('disables start button when name is not selected', () => {
-    setup('', '1');
-    expect(screen.getByRole('button', { name: 'Start' })).toBeDisabled();
-  });
+  it('shows error when test is not selected', () => {
+    setup('Maris');
 
-  it('enables start button when name and test are provided', () => {
-    setup('Maris', '1');
-    expect(screen.getByRole('button', { name: 'Start' })).toBeEnabled();
+    fireEvent.click(screen.getByRole('button', { name: 'Start' }));
+
+    expect(screen.getByText('Please select Test')).toBeInTheDocument();
   });
 
   it('calls setSelectedTestKey when a dropdown option selected', async () => {
