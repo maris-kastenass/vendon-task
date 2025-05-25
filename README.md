@@ -1,36 +1,46 @@
-Project Preparation
+# 📦 vendon-task
 
-Clone the Repository
+A modern React + TypeScript project using Vite, Jest for testing, ESLint + Prettier for linting and formatting, and Bootstrap for styling.
 
-git clone <your-repo-url>
-cd vendon-task
+---
 
-Install Dependencies
+## 🚀 Getting Started
 
-npm install
+### 1. Clone the repository
+```bash
 
-🧪 Development & Testing Setup
-Linting and Formatting
-Make sure ESLint and Prettier are functional:
+`git clone https://github.com/your-username/vendon-task.git`
+`cd vendon-task`
 
-npm run lint
+2. Install dependencies
 
-Run Tests
+`npm install`
 
-npm run test
+3. Run the development server
 
-Make sure jest runs with no errors. JSDOM is set as the test environment.
+`npm run dev`
 
-⚙️ Build and Serve
-8. Build the Project
+Open http://localhost:5173 to view the app.
 
-npm run build
+🧪 Running Tests
 
-This runs both TypeScript compilation and Vite build.
+`npm run test`
 
-9. Preview the Build
+Uses Jest with jsdom and Testing Library for unit and component testing.
 
-npm run preview
+🔎 Linting and Formatting
+# Run ESLint
 
-Vite will serve the production build on a local port (default: http://localhost:4173).
+`npm run lint`
 
+📦 Building for Production
+
+`npm run build`
+
+Builds the app for production using TypeScript and Vite.
+
+🌐 Preview Build
+
+`npm run preview`
+
+Serves the production build locally for testing.
