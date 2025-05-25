@@ -1,0 +1,9 @@
+.questions-container { 
+  max-width: 600px;
+  border-radius: 25px;
+  background-color: white;
+}
+
+.questions-answer {
+  margin-top: 10px;
+}
